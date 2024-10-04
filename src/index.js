@@ -1,17 +1,24 @@
+// src/index.js
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import { createRoot } from 'react-dom/client'; // Import createRoot from react-dom/client
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // React Router v6
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Get the root element in your HTML
+const container = document.getElementById('root');
+
+// Use createRoot instead of ReactDOM.render
+const root = createRoot(container);
+
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        {/* Dynamic route for the calendar */}
+        <Route path="/:year/:month" element={<App />} />
+        {/* Redirect to the current month if no path is provided */}
+        <Route path="*" element={<App />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
