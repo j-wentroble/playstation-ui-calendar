@@ -5,7 +5,7 @@ import "./index.css";
 const LoadingSpinner = () => {
   return (
     <div className="spinner-container">
-      <div className="spinner"></div>
+      <div role="status" className="spinner"></div>
     </div>
   );
 };
