@@ -6,7 +6,7 @@ const EventModal = ({ event, onClose }) => {
   if (!event) return null; // Don't render if no event is selected
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay" data-testid="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="close-button" onClick={onClose}>X</button>
         <img className="event-image" src={require(`../../assets/${event.imageThumb}.webp`)} alt={event.title} />
