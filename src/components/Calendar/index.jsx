@@ -34,7 +34,17 @@ const Calendar = ({ currentMonth, events, onEventClick }) => {
           const isCurrentDay = isToday(day); // Check if the day is today
 
           // Filter events by matching the day with the event's date
-          const dayEvents = events.filter(event => format(new Date(event.date), 'yyyy-MM-dd') === format(day, 'yyyy-MM-dd'));
+          const dayEvents = events.filter(event => {
+            const eventDate = new Date(event.date);
+            const dayDate = new Date(day);
+          
+            if (isNaN(eventDate.getTime()) || isNaN(dayDate.getTime())) {
+              return false;  // Skip invalid dates
+            }
+          
+            return format(eventDate, 'yyyy-MM-dd') === format(dayDate, 'yyyy-MM-dd');
+          });
+          
 
           let cellClass = 'day-cell';
           if (!isCurrentMonth) {
