@@ -1,70 +1,121 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# PlayStation Calendar App
 
-## Available Scripts
+A React application that displays upcoming PlayStation game events in a calendar format. The app fetches data from an external API and provides detailed information for each event, such as the title, description, and links to learn more or purchase the game. The calendar allows users to view events by month and interact with event modals for more information.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Dynamic Event Display**: View PlayStation game events in a calendar format.
+- **Event Modals**: Click on events to view more details like event description and links.
+- **Responsive Design**: Adjusts to various screen sizes.
+- **Error Handling**: Gracefully handles API errors and invalid event data.
+- **Unit Testing**: Well-tested with `@testing-library/react` and Jest to ensure robust functionality.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend**: React, TypeScript, CSS Modules
+- **State Management**: React Hooks
+- **API**: Axios for fetching data from the backend
+- **Testing**: Jest, React Testing Library
+- **Build Tool**: Webpack (with Create React App configuration)
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started with the project locally, follow the steps below:
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   git clone https://github.com/j-wentroble/playstation-ui-calendar.git
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Navigate to the project directory:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   cd playstation-ui-calendar
+   ```
 
-### `npm run eject`
+3. Install dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Start the development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. Run tests:
 
-## Learn More
+   ```bash
+   npm test
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6. Build for production:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   npm run build
+   ```
 
-### Code Splitting
+## Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The project structure is organized as follows:
 
-### Analyzing the Bundle Size
+```
+src/
+│
+├── components/
+│   ├── CalendarHeader/
+│   │   ├── index.tsx
+│   │   └── CalendarHeader.test.tsx
+│   ├── EventModal/
+│   │   ├── index.tsx
+│   └── └── EventModal.test.tsx
+│   
+│
+├── utils/
+│   ├── api.ts
+│   └── api.test.ts
+│
+├── index.tsx
+└── App.tsx
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Testing
 
-### Making a Progressive Web App
+The project includes comprehensive unit tests using `@testing-library/react` and Jest. These tests ensure the components work correctly and handle various scenarios, such as:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Rendering the calendar and events
+- Displaying event modals
+- Handling API errors gracefully
+- Validating dates and data before rendering events
 
-### Advanced Configuration
+To run the tests:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm test
+```
 
-### Deployment
+## API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The app fetches PlayStation events from a mock API using Axios. Each event contains the following properties:
 
-### `npm run build` fails to minify
+- `id`: Unique identifier for the event
+- `title`: Title of the event (game)
+- `summary`: Short description of the event
+- `launchDate`: The date when the event is happening
+- `imageThumb`: URL of the event's thumbnail image
+- `learnMoreLink`: External link for more details about the game
+- `purchaseLink`: External link to purchase the game
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributions
+
+Contributions are welcome! If you find any bugs or want to add new features, please feel free to create a pull request.
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/my-feature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/my-feature`)
+5. Open a pull request
