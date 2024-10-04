@@ -1,4 +1,4 @@
-// src/components/CalendarEvent.js
+// src/components/CalendarEvent
 import React from 'react';
 
 const CalendarEvent = ({ event, date, onEventClick }) => {
