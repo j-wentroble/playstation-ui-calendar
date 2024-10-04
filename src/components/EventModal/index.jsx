@@ -1,4 +1,4 @@
-// src/components/EventModal
+// src/components/EventModal/index.jsx
 import React from 'react';
 import './index.css';
 

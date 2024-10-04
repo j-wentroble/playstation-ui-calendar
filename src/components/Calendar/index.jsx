@@ -1,4 +1,4 @@
-// src/components/Calendar
+// src/components/Calendar/index.jsx
 import React from 'react';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, format, isToday } from 'date-fns';
 import CalendarEvent from '../CalendarEvent';

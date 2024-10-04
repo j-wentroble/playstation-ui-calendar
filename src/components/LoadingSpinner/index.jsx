@@ -1,4 +1,4 @@
-// src/components/LoadingSpinner
+// src/components/LoadingSpinner/index.jsx
 import React from "react";
 import "./index.css";
 
