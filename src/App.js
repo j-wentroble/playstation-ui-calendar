@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import CalendarHeader from './components/CalendarHeader';
 import Calendar from './components/Calendar';
 import EventModal from './components/EventModal';
+import LoadingSpinner from './components/LoadingSpinner'; // Import the spinner component
 import { fetchEvents } from './utils/api';
 
 import './App.css';
@@ -15,6 +16,7 @@ function App() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [loading, setLoading] = useState(false); // Add loading state
 
   // Helper to check if the provided year and month are valid
   const isValidYearMonth = (year, month) => {
@@ -41,7 +43,11 @@ function App() {
 
   // Fetch events whenever the current month changes
   useEffect(() => {
-    fetchEvents().then(data => setEvents(data));
+    setLoading(true); // Show the loading spinner when data is being fetched
+    fetchEvents().then(data => {
+      setEvents(data);
+      setLoading(false); // Hide the loading spinner after data is fetched
+    });
   }, []);
 
   const handlePrevMonth = () => {
@@ -56,6 +62,12 @@ function App() {
     setCurrentMonth(nextMonth);
   };
 
+  const handleTodayClick = () => {
+    const today = new Date();
+    navigate(`/${format(today, 'yyyy/MM')}`); // Navigate to current date
+    setCurrentMonth(today);
+  };
+
   const handleEventClick = (event) => {
     setSelectedEvent(event);
   };
@@ -66,16 +78,21 @@ function App() {
 
   return (
     <div className="app">
+      {loading && <LoadingSpinner />} {/* Display the loading spinner */}
+      
       <CalendarHeader 
         currentMonth={currentMonth} 
         onPrevMonth={handlePrevMonth} 
         onNextMonth={handleNextMonth} 
+        onTodayClick={handleTodayClick}
       />
+      
       <Calendar 
         currentMonth={currentMonth} 
         events={events} 
         onEventClick={handleEventClick} 
       />
+      
       <EventModal event={selectedEvent} onClose={handleCloseModal} />
     </div>
   );
